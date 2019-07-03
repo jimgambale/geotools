@@ -207,10 +207,12 @@ public class VPFDataStoreFactory implements DataStoreFactorySpi {
                 // linux
                 file = new File(url.getFile());
             }
+            File lhtFile;
             if (file.isDirectory()) {
-                file = new File(file, FileConstants.LIBRARY_HEADER_TABLE);
+                lhtFile = new File(file, FileConstants.LIBRARY_HEADER_TABLE);
             } else {
-                if (!file.getName().equalsIgnoreCase(FileConstants.LIBRARY_HEADER_TABLE)) {
+                lhtFile = file;
+                if (!lhtFile.getName().equalsIgnoreCase(FileConstants.LIBRARY_HEADER_TABLE)) {
                     throw new IOException("File: " + file + "is not a lht file");
                 }
             }
